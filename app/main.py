@@ -17,7 +17,8 @@ from sqlalchemy.orm import Session
 from . import models
 from .database import SessionLocal, engine, get_db
 from .inference import get_prediction
-models.Base.metadata.create_all(bind=engine)
+
+# models.Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI()
@@ -29,17 +30,17 @@ class Post(BaseModel):
     label: str
     prediction: float
 
-while True:
-    try:
-        conn = psycopg2.connect(host='localhost',database='webapp',user='postgres',
-        password='123456', cursor_factory=RealDictCursor)
-        cursor = conn.cursor()
-        print("Database connection was succesfull!")
-        break
-    except Exception as error:
-        print("Connection to database failed")
-        print("Error: ", error)
-        time.sleep(2)
+# while True:
+#     try:
+#         conn = psycopg2.connect(host='localhost',database='webapp',user='postgres',
+#         password='123456', cursor_factory=RealDictCursor)
+#         cursor = conn.cursor()
+#         print("Database connection was succesfull!")
+#         break
+#     except Exception as error:
+#         print("Connection to database failed")
+#         print("Error: ", error)
+#         time.sleep(2)
 
 @app.get("/")
 async def root(request: Request):
@@ -62,5 +63,5 @@ async def post(request: Request):
         response = templates.TemplateResponse("page1.html", {"request": request,"input":formData['text'], "data": data})
         return response
     except Exception as error:
-        print(error)
+        # print(error)
         return {"status": "error"}
