@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}FastAPI Starter{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+{% include 'include/sidebar.html' %}
+<h1>
+    webapp pour la reconnaissance des émotions
+</h1>
+
+<div class="container">
+  <!-- <h1>Text input</h1> -->
+  <hr>
+  <form class="form-inline"  method="post", enctype="multipart/form-data">
+    <div class="form-group">
+      <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">>></span>
+      </div>
+      <input type="text" placeholder="écrire" value="{{input}}" name="text" class="btn btn-default">
+    </div>
+    <div class="form-group">
+      <input type="submit" value="submit" class="btn btn-default">
+    </div>
+  </form>
+</div>
+<div>
+  <!-- <h3>Predicted class is {{data.label}} with confidence {{data.score}}%</h3> -->
+  <h3>la classe prédite est {{data.label}} avec confidence de {{data.score}}%</h3>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

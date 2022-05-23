@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}FastAPI Starter{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+{% include 'include/sidebar.html' %}
+<h1>
+    webapp pour la reconnaissance des émotions
+</h1>
+
+<div class="container">
+    <!-- <h1>Predicted Class: {{ data }}</h1>
+    <hr>
+    <a href="{{ url_for('page') }}" class="btn btn-default"></a> -->
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}
